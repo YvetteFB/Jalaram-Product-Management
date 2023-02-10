@@ -5,34 +5,30 @@ from django.http import HttpResponse, Http404
 from datetime import datetime
 from django.contrib.auth.models import User
 
-
 # Create your views here.
 
-from . models import Product, Category, Comment
-from . forms import ProductForm, CommentForm
+from .models import Product, Category, Comment
+from .forms import ProductForm, CommentForm
 
 
-@login_required(login_url='accounts/login')
 def ShowAllProducts(request):
-    
     category = request.GET.get('category')
 
     if category == None:
         products = Product.objects.order_by('-price').filter(is_published=True)
         page_num = request.GET.get("page")
-        paginator = Paginator(products, 2)
+        paginator = Paginator(products, 10)
         try:
             products = paginator.page(page_num)
         except PageNotAnInteger:
             products = paginator.page(1)
         except EmptyPage:
-            products = paginator.page(paginator.num_pages)             
+            products = paginator.page(paginator.num_pages)
     else:
         products = Product.objects.filter(category__name=category)
-       
-    
+
     categories = Category.objects.all()
-    
+
     context = {
         'products': products,
         'categories': categories
@@ -41,8 +37,6 @@ def ShowAllProducts(request):
     return render(request, 'showProducts.html', context)
 
 
-
-@login_required(login_url='showProducts')
 def productDetail(request, pk):
     eachProduct = Product.objects.get(id=pk)
 
@@ -54,7 +48,6 @@ def productDetail(request, pk):
     }
 
     return render(request, 'productDetail.html', context)
-
 
 
 @login_required(login_url='showProducts')
@@ -70,14 +63,14 @@ def addProduct(request):
         form = ProductForm()
 
     context = {
-        "form":form
+        "form": form
     }
 
     return render(request, 'addProduct.html', context)
 
 
 @login_required(login_url='showProducts')
-def updateProduct(request,pk):
+def updateProduct(request, pk):
     product = Product.objects.get(id=pk)
 
     form = ProductForm(instance=product)
@@ -89,11 +82,10 @@ def updateProduct(request,pk):
             return redirect('showProducts')
 
     context = {
-        "form":form
+        "form": form
     }
 
     return render(request, 'updateProduct.html', context)
-
 
 
 @login_required(login_url='showProducts')
@@ -103,14 +95,12 @@ def deleteProduct(request, pk):
     return redirect('showProducts')
 
 
-
-@login_required(login_url='showProducts')
 def searchBar(request):
     if request.method == 'GET':
         query = request.GET.get('query')
         if query:
-            products = Product.objects.filter(price__icontains=query) 
-            return render(request, 'searchbar.html', {'products':products})
+            products = Product.objects.filter(name__icontains=query)
+            return render(request, 'searchbar.html', {'products': products})
         else:
             print("No information to show")
             return render(request, 'searchbar.html', {})
@@ -130,10 +120,9 @@ def add_comment(request, pk):
             c.save()
             return redirect('showProducts')
         else:
-            print('form is invalid')    
+            print('form is invalid')
     else:
-        form = CommentForm()    
-
+        form = CommentForm()
 
     context = {
         'form': form

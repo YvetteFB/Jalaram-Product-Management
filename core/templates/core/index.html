@@ -1,0 +1,153 @@
+{% extends  'core/base.html'%}
+{% load static %}
+{% block content %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+      <h1>Jalaram Industrial Suppliers</h1>
+      <h2>Dealers in Hardware, Industrial Spares)
+Engineering Tools & Welding Products</h2>
+      <a href="#about" class="btn-get-started scrollto">Learn More
+      </a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <h2>About Us</h2>
+              <img src="{% static 'assets/img/about.svg' %}" alt="" class="img-fluid" style="height: 300px">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+            <p>
+              Jalaram Industrial Suppliers Ltd deals in the
+supply of a variety of products. We pride
+ourselves on the versatility of choice, price and
+deliverability of our services.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Vision</li>
+                <p>With a vision
+become one of the leading
+supplies companies in the region both the
+management and the staff believe in honesty
+and integrity as we serve our customers and wi
+believe in doing business in a fair and ethical
+manner governed from years' experience in the
+industry.</p>
+              <li><i class="ri-check-double-line"></i> Main goal</li>
+                <p>Our main goal is to ensure that our clients.
+remain the focus and center of our activities as
+we strive to meet the needs of the industry.</p>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-left">
+          <h2>Products</h2>
+        </div>
+
+
+
+        {% if products %}
+
+            {% for product in products.Product %}
+
+                <div class="col-lg-3 mb-3 col-md-6 d-flex align-items-stretch">
+    		    <div class="card profile-card-5">
+    		        <div class="card-img-block">
+    		            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+    		        </div>
+                    <div class="card-body pt-0">
+                        <span class="badge rounded-pill text-bg-secondary">{{ product.category.name }}</span>
+                    <h5 class="card-title">{{ product.name }}</h5>
+
+                        <span><a href="{% url 'product' product.pk  %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
+
+                    </div>
+                </div>
+    		</div>
+
+            {% endfor %}
+
+            {% else %}
+                 <p>No Products </p>
+            {% endif %}
+
+
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <div class="section-title">
+              <h2>Contact</h2>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="info mt-4">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>AGA KHAN ROAD,
+NEAR BLOOD CENTRE
+P.O.BOX 97044-80112, MOMBASA</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mt-4">
+                <div class="info">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>info@jalaramkenya.com</p>
+                  <p>jalarammsa@gmail.com</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="info w-100 mt-4">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>0723338478</p>
+                  <p>0731768851</p>
+                  <p>0412314147</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}
