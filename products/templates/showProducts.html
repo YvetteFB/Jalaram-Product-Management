@@ -2,9 +2,35 @@
 
 
 {% block content %}
+ <header class="header" id="header">
+        <div class="header_toggle btn btn-primary" id="header-toggle"> <i class="bi bi-funnel-fill" ></i> <span>Filter by Category</span></div>
+        <form action="{% url 'search' %}" method="get" class="d-flex">
+            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
 
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div class="">
+                <a href="#" class="nav_logo"> <span class="nav_logo-name">Categories</span> </a>
+                <div class="nav_list">
+                    <a class="nav_link" href="{% url 'showProducts' %}">All</a>
 
-    <div class="container">
+                  {% for category in categories %}
+
+                    <li class="list-group-item">
+                        <a class="nav_link" href="{% url 'showProducts' %}?category={{ category.name }}">{{ category.name }}</a>
+                    </li>
+
+                  {% endfor %}
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="height-100 bg-light">
 
 
        <div class="row">
@@ -36,22 +62,6 @@
 
 
         </div>
-    <div class="col-md-4 sticky-top">
-              <h2>Category</h2>
-              <br>
-              <hr>
-
-                  <a class="list-group-item" href="{% url 'showProducts' %}">All</a>
-
-                  {% for category in categories %}
-
-                    <li class="list-group-item">
-                        <a class="btn btn-primary" href="{% url 'showProducts' %}?category={{ category.name }}">{{ category.name }}</a>
-                    </li>
-
-                  {% endfor %}
-
-            </div>
 
 
         <div class="row m-5">

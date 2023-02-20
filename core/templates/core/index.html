@@ -9,66 +9,45 @@
       <h1>Jalaram Industrial Suppliers</h1>
       <h2>Dealers in Hardware, Industrial Spares)
 Engineering Tools & Welding Products</h2>
-      <a href="#about" class="btn-get-started scrollto">Learn More
-      </a>
+        <a href="#about" class="btn btn-primary scrollto">Learn More</a>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
 
-
-
-    <!-- ======= About Section ======= -->
+      <!-- ======= About Section ======= -->
     <section id="about" class="about">
-      <div class="container">
-
-        <div class="row content">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-            <h2>About Us</h2>
-              <img src="{% static 'assets/img/about.svg' %}" alt="" class="img-fluid" style="height: 300px">
+      <div class="container d-flex flex-column" data-aos="fade-up">
+          <div class="section-title">
+              <h2>About Us</h2>
+              <p>Learn more about us</p>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
-            <p>
-              Jalaram Industrial Suppliers Ltd deals in the
-supply of a variety of products. We pride
-ourselves on the versatility of choice, price and
-deliverability of our services.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Vision</li>
-                <p>With a vision
-become one of the leading
-supplies companies in the region both the
-management and the staff believe in honesty
-and integrity as we serve our customers and wi
-believe in doing business in a fair and ethical
-manner governed from years' experience in the
-industry.</p>
-              <li><i class="ri-check-double-line"></i> Main goal</li>
-                <p>Our main goal is to ensure that our clients.
-remain the focus and center of our activities as
-we strive to meet the needs of the industry.</p>
-            </ul>
-          </div>
-        </div>
-
+          <p class="col-9 align-self-center text-center">Jalaram Industrial Suppliers Ltd deals in the supply of a variety of products. We pride ourselves on the versatility of choice, price and deliverability of our services. With a vision become one of the leading supplies companies in the region both the management and the staff believe in honesty and integrity as we serve our customers and wi believe in doing business in a fair and ethical manner governed from years' experience in the industry. Our main goal is to ensure that our clients. remain the focus and center of our activities as we strive to meet the needs of the industry.</p>
       </div>
     </section><!-- End About Section -->
 
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <section id="products" class="products">
       <div class="container">
 
         <div class="section-title" data-aos="fade-left">
           <h2>Products</h2>
+            <p>Look at what we have</p>
         </div>
 
 
+      <div class="d-flex justify-content-end mb-2">
+          <a class="btn btn-outline-primary" href="{% url 'showProducts' %}">See more <i class="bi bi-arrow-right"></i></a>
+      </div>
 
-        {% if products %}
 
-            {% for product in products.Product %}
+
+        <div class="row">
+
+            {% if products %}
+
+            {% for product in products %}
 
                 <div class="col-lg-3 mb-3 col-md-6 d-flex align-items-stretch">
     		    <div class="card profile-card-5">
@@ -77,9 +56,8 @@ we strive to meet the needs of the industry.</p>
     		        </div>
                     <div class="card-body pt-0">
                         <span class="badge rounded-pill text-bg-secondary">{{ product.category.name }}</span>
-                    <h5 class="card-title">{{ product.name }}</h5>
-
-                        <span><a href="{% url 'product' product.pk  %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <a href="{% url 'product' product.pk  %}" class="btn btn-outline-danger m-1 ms-auto">Detail</a>
 
                     </div>
                 </div>
@@ -92,10 +70,11 @@ we strive to meet the needs of the industry.</p>
             {% endif %}
 
 
-
         </div>
 
-      </div>
+
+       </div>
+
     </section><!-- End Portfolio Section -->
 
 
@@ -108,6 +87,7 @@ we strive to meet the needs of the industry.</p>
           <div class="col-lg-4" data-aos="fade-right">
             <div class="section-title">
               <h2>Contact</h2>
+                <p>Reach out to us</p>
             </div>
           </div>
 
