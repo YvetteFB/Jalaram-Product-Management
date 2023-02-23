@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('core.urls')),
     path('products/', include('products.urls')),
     path('accounts/', include('accounts.urls')),
-    path('pdf/', include('pdf_convert.urls')),
+    # path('pdf/', include('pdf_convert.urls')),
     path('emailsender/', include('send_email.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
