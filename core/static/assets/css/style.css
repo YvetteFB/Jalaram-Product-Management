@@ -1,15 +1,10 @@
-/**
-* Template Name: Bethany - v4.10.0
-* Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;500&display=swap');
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #444444;
 }
 
@@ -29,7 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+font-family: 'Raleway', sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -175,9 +170,8 @@ backdrop-filter: blur( 4px );
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   transition: 0.3s;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   white-space: nowrap;
   transition: 0.3s;
@@ -194,10 +188,7 @@ backdrop-filter: blur( 4px );
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #fff;
-  background-color: #0061BA;
-  padding: 2px;
-  border-radius: 3px;
+  color: #0061BA;
 }
 
 
