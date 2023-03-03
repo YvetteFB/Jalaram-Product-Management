@@ -5,8 +5,11 @@
  <header class="header" id="header">
         <div class="header_toggle btn btn-primary" id="header-toggle"> <i class="bi bi-funnel-fill" ></i> <span>Filter by Category</span></div>
         <form action="{% url 'search' %}" method="get" class="d-flex">
-            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+{#            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">#}
+{#            <button class="btn btn-outline-success" type="submit">Search</button>#}
+            <label for="search">Search</label>
+	<input id="search" type="search" pattern=".*\S.*" required>
+	<span class="caret"></span>
         </form>
 
     </header>
@@ -30,7 +33,7 @@
         </nav>
     </div>
 
-    <div class="height-100 bg-light">
+    <div class="height-100 bg-light pt-5">
 
 
        <div class="row">
@@ -39,7 +42,7 @@
 
             {% for product in products %}
 
-                <div class="col-lg-3 mb-3 col-md-6 d-flex align-items-stretch">
+                <div class="col-lg-3 mb-3 col-md-6 d-flex align-items-stretch justify-content-center">
     		    <div class="card profile-card-5">
     		        <div class="card-img-block">
     		            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
