@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
     'accounts.apps.AccountsConfig',
-    'pdf_convert.apps.PdfConvertConfig',
-    'send_email.apps.SendEmailConfig',
+
     'core',
 ]
 

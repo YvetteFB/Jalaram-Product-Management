@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
  <header class="header" id="header">
-        <div class="header_toggle btn btn-primary" id="header-toggle"> <i class="bi bi-funnel-fill" ></i> <span>Filter by Category</span></div>
-        <form action="{% url 'search' %}" method="get" class="d-flex">
-{#            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">#}
-{#            <button class="btn btn-outline-success" type="submit">Search</button>#}
-            <label for="search">Search</label>
-	<input id="search" type="search" pattern=".*\S.*" required>
-	<span class="caret"></span>
-        </form>
+    <div class="logo" >
+          <a href="{% url 'core:index' %}"><img style=" max-height: 40px;" src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+    </div>
 
     </header>
     <div class="l-navbar" id="nav-bar">
@@ -32,30 +28,46 @@
             </div>
         </nav>
     </div>
+    <div>
+    <div class="header_toggle btn btn-primary mt-2" id="header-toggle"> <i class="bi bi-funnel-fill" ></i> <span>Filter by Category</span></div>
+    <form action="{% url 'search' %}" method="get" class="d-flex col-6 mx-auto mb-3">
+            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+
+
+{#    <div class="col-md-12">#}
+{##}
+{#                <div class="form">#}
+{#                  <i class="fa fa-search"></i>#}
+{#                  <input type="text" class="form-control form-input" placeholder="Search anything...">#}
+{#                  <span class="left-pan"><i class="fa fa-microphone"></i></span>#}
+{#                </div>#}
+{##}
+{#              </div>#}
 
     <div class="height-100 bg-light pt-5">
-
 
        <div class="row">
 
             {% if products %}
 
             {% for product in products %}
-
                 <div class="col-lg-3 mb-3 col-md-6 d-flex align-items-stretch justify-content-center">
-    		    <div class="card profile-card-5">
-    		        <div class="card-img-block">
-    		            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-    		        </div>
-                    <div class="card-body pt-0">
-                        <span class="badge rounded-pill text-bg-secondary">{{ product.category.name }}</span>
-                    <h5 class="card-title">{{ product.name }}</h5>
+                    <div class="card profile-card-5">
+                        <div class="card-img-block">
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body pt-0">
+                            <span class="badge rounded-pill text-bg-secondary">{{ product.category.name }}</span>
+                            <h5 class="card-title">{{ product.name }}</h5>
 
-                        <span><a href="{% url 'product' product.pk  %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
+                            <span><a href="{% url 'product' product.pk  %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
 
+                        </div>
                     </div>
                 </div>
-    		</div>
 
             {% endfor %}
 
